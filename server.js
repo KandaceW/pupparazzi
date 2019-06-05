@@ -13,11 +13,9 @@ server.set('view engine', 'hbs')
 server.use(express.static('public'))
 server.use(express.urlencoded({extended: false}))
 
-server.use('/', indexContacts)
+server.use('/contacts', indexContacts)
 
 server.use('/', indexRoutes)
-
-
 
 
 module.exports = server

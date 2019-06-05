@@ -2,7 +2,10 @@ const express = require('express')
 const hbs = require('express-handlebars')
 
 const server = express()
-const routesFolder = require('./routes')
+const routes = require('./routes')
+
+
+// server.get('/')
 
 // Middleware
 server.engine('hbs', hbs({
@@ -16,6 +19,6 @@ server.use(express.urlencoded({extended: false}))
 server.get('/',(req, res) => {
   res.send('Pupparazzi')
 })
-server.use('/router', routesFolder)
+server.use('/router', routes)
 
 module.exports = server

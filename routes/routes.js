@@ -48,6 +48,7 @@ router.post("/puppies/edit/:id", (req, res) => {
   console.log("NEW VALUE OF PUPPY ", puppy);
   console.log("UPDATED ARRAY??? ", puppies);
 
+  //Write the entire array back into the JSON file
   fs.writeFile(
     "puppies",
     JSON.stringify(puppies.puppies, null, 2),
@@ -55,17 +56,9 @@ router.post("/puppies/edit/:id", (req, res) => {
     err => {
       if (err) throw err;
       console.log("The puppies have been updated");
-      res.render("puppies/edit", puppy);
+      res.render("puppies/edit", puppy); //render the puppy page with the edits
     }
   );
-
-  //read in the puppies.JSON we want to update
-  // fs.readFile("puppies", (err, data) => {
-  //   if (err) throw err
-  //   puppy =
-  // })
-
-  //Write the entire array back into the JSON file
-}); //AFTER THIS WRITE THE REDIRECT FOR THIS ROUTE
+});
 
 module.exports = router;

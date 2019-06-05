@@ -1,7 +1,11 @@
 const express = require ('express')
 const router = express.Router ()
 
-// router.get('/index', (req, res) => {
+//const puppies = require('./data.jason')
+
+
+
+// router.get('/puppies', (req, res) => {
 //     res.send('Here are the Puppies!')
 // })
 

@@ -19,11 +19,11 @@ server.use(express.static('public'))
 server.use(express.urlencoded({extended: false}))
 
 server.get('/', (req, res)=>{
-  res.render('puppies/index', puppies)
+  res.render('puppies/index', data)
 })
 
 server.get('/puppies', (req, res)=>{
-  res.render('puppies/index', puppies)
+  res.render('puppies/index', data)
 })
 
 // Array of puppies

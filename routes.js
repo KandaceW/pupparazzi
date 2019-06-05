@@ -24,7 +24,7 @@ router.get('/:id',(req, res) =>{
   res.render("puppies/view", pups);
 })
 
-router.get('/:id',(req, res) =>{
+router.get('/edit/:id',(req, res) =>{
   const pups = data.puppies.find(item => {
     return item.id == req.params.id;
   });
@@ -32,8 +32,13 @@ router.get('/:id',(req, res) =>{
     puppies: [data.puppies]
   };
   console.log(pups);
-  res.render("puppies/view", pups);
+  res.render("puppies/edit", pups);
 })
+// Create an object that represents all the data of the puppy we are going to update
+// Read in the JSON file and locate the puppy we are going to update
+// Update the puppy in the array
+// Write the entire array back into the JSON file
+// Redirect to the get /puppies/edit/:id route
 
 
 module.exports = router

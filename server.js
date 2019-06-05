@@ -19,6 +19,6 @@ server.use(express.urlencoded({extended: false}))
 server.get('/',(req, res) => {
   res.send('Pupparazzi')
 })
-server.use('/router', routes)
+server.use('/puppies', routes)
 
 module.exports = server

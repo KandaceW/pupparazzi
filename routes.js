@@ -8,12 +8,12 @@ const viewData = {
   title: "pupperazzi",
   puppies: data.puppies
 }
-router.get('/',(req, res) =>{
+router.get('/', (req, res) => {
   console.log(viewData)
-  res.render('puppies/index',viewData)
+  res.render('puppies/index', viewData)
 })
 
-router.get('/:id',(req, res) =>{
+router.get('/:id', (req, res) => {
   const pups = data.puppies.find(item => {
     return item.id == req.params.id;
   });
@@ -24,7 +24,7 @@ router.get('/:id',(req, res) =>{
   res.render("puppies/view", pups);
 })
 
-router.get('/edit/:id',(req, res) =>{
+router.get('/edit/:id', (req, res) => {
   const pups = data.puppies.find(item => {
     return item.id == req.params.id;
   });
@@ -40,20 +40,27 @@ router.get('/edit/:id',(req, res) =>{
 // Write the entire array back into the JSON file
 // Redirect to the get /puppies/edit/:id route
 
-router.post('/edit/:id',(req, res) =>{
-//  const pupBeingEdited = {puppies[id]}
-console.log(req.body)
-const pup = data.puppies.find(item => {
-  return item.id == req.params.id;
-});
-//modify pup using req.body then write data back to the file
-pup.name = req.body.name
-pup.breed = req.body.breed
-pup.owner = req.body.owner
-// fs.writeFile
+router.post('/edit/:id', (req, res) => {
+  //  const pupBeingEdited = {puppies[id]}
+  console.log(req.body)
+  const pup = data.puppies.find(item => {
+    return item.id == req.params.id;
+  });
+  //modify pup using req.body then write data back to the file
+  // pup.name = req.body.name
+  // pup.breed = req.body.breed
+  // pup.owner = req.body.owner
+  let pupdate = req.body
+  Object.assign(pup, pupdate);
+  fs.writeFile('data.json', JSON.stringify(data, null, 2), 'utf8', (err) => {
+    console.error(err)
+    // if (err) throw err;
+    console.log('doggo has been changed')
+    res.redirect('/puppies/' + req.params.id)
+  })
 
 
-console.log(data)
+
 })
 
 
